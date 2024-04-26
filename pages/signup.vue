@@ -11,6 +11,9 @@ import {
 const client = useSupabaseClient();
 const err = ref("");
 const isOpen = ref(true);
+const pushHome = () => {
+  return navigateTo("/");
+};
 
 const form = reactive({
   email: "",
@@ -81,7 +84,7 @@ async function onSubmit(event: FormSubmitEvent<any>) {
 </script>
 
 <template>
-  <div class="flex items-center justify-center h-screen p-4">
+  <div class="flex items-center justify-center h-screen p-4 bg-[url('/bg.jpg')] dark:bg-[url('/darkbg.jpg')]">
     <UCard
       :ui="{
         ring: '',
@@ -89,7 +92,12 @@ async function onSubmit(event: FormSubmitEvent<any>) {
       }"
     >
       <template #header>
-        <h1 class="text-center">Sign Up</h1>
+        <div class="flex items-center justify-center relative">
+          <ULink @click="pushHome" class="absolute left-0 top-1">
+            <UIcon name="i-heroicons-arrow-left" size="24" />
+          </ULink>
+          <h1 class="text-center">Sign Up</h1>
+        </div>
       </template>
 
       <UContainer>

@@ -7,7 +7,7 @@
     
           indicators
         >
-        <div       class="overflow-hidden w-3/4 md:w-1/2 text-center mx-auto p-2 flex flex-col items-center justify-center dark:bg-gray-900 ">
+        <div       class="overflow-hidden w-3/4 md:w-1/2 text-center mx-auto  flex flex-col items-center justify-center ">
           <div>
             <h1 class="text-center text-lg">{{ item.header }}</h1>
           </div>
@@ -19,7 +19,7 @@
               class="rounded-full h-36 w-36"
             />
           </div>
-          <div class="text-center py-8">
+          <div class="text-center py-8 text-lg ">
             <p>{{ item.description }}</p>
           </div>
         </div>

@@ -1,6 +1,6 @@
 <template>
-    <div class="flex items-center justify-center h-screen p-4">
-   
+    <div class="flex items-center justify-center h-screen p-4 bg-[url('/bg.jpg')] dark:bg-[url('/darkbg.jpg')]">
+  
         <UCard
           :ui="{
             ring: '',
@@ -9,7 +9,9 @@
         >
           <template #header>
             <div class="flex items-center justify-center relative">
-            
+              <ULink @click="pushHome" class="absolute left-0 top-1">
+              <UIcon name="i-heroicons-arrow-left" size="24" />
+            </ULink>
               <h1>Login</h1>
             </div>
           </template>

@@ -1,6 +1,6 @@
 <template>
     <UContainer
-      class="mx-auto px-4 h-16 sm:px-6 lg:px-8 max-w-7xl flex items-center justify-between border-b border-gray-200 dark:border-gray-600 gap-3 "
+      class="mx-auto px-4 h-16 sm:px-6 lg:px-8 max-w-7xl flex items-center justify-between border-b border-gray-200 dark:border-gray-600 gap-3 bg-transparent "
     >
       <div class="lg:flex-1 flex items-center ">
         <ULink to="/">
@@ -101,7 +101,7 @@
   
   const signOut = () => {
     supabase.auth.signOut();
-    user.value = null;
+   
   
     return navigateTo("/");
   };
@@ -120,7 +120,7 @@
   });
   const horizontalLinks = [
     [
-      {
+    {
         label: "Home",
         icon: "i-heroicons-home",
         to: "/",
@@ -128,19 +128,18 @@
       {
         label: "Community",
         icon: "i-heroicons-globe-europe-africa-solid",
-        to: "/sales",
+        to: "/community",
       },
       {
         label: "Quotes",
         icon: "i-heroicons-light-bulb",
-        to: "/shops",
+        to: "/quotes",
       },
       {
         label: "Free-Place",
         icon: "i-heroicons-book-open",
-        to: "/ending-soon",
+        to: "/freeplace",
       },
-  
    
     ],
   ];
@@ -154,17 +153,17 @@
       {
         label: "Community",
         icon: "i-heroicons-globe-europe-africa-solid",
-        to: "/sales",
+        to: "/community",
       },
       {
         label: "Quotes",
         icon: "i-heroicons-light-bulb",
-        to: "/shops",
+        to: "/quotes",
       },
       {
         label: "Free-Place",
         icon: "i-heroicons-book-open",
-        to: "/ending-soon",
+        to: "/freeplace",
       },
       
     ],
