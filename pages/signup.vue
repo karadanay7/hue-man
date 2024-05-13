@@ -15,6 +15,18 @@ const pushHome = () => {
   return navigateTo("/");
 };
 
+ const login = async (_prov: any) => {
+    const { data, error } = await client.auth.signInWithOAuth({
+      provider: "google",
+      options: {
+        queryParams: {
+          access_type: "offline",
+          prompt: "consent",
+        },
+      },
+    });
+  };
+
 const form = reactive({
   email: "",
   password: "",
@@ -101,12 +113,24 @@ async function onSubmit(event: FormSubmitEvent<any>) {
       </template>
 
       <UContainer>
+        <div class="mb-4">
+              <UButton
+                @click="login('google')"
+                type="button"
+                size="sm"
+                class="flex items-center w-44 justify-center"
+              >
+                <UIcon name="flat-color-icons:google" dynamic size="20" />
+                <span> Google</span>
+              </UButton>
+            </div>
         <UForm
           :state="form"
           :validate="validateWithVuelidate"
           class="space-y-4"
           @submit="onSubmit"
         >
+      
           <UFormGroup label="Email" name="email">
             <UInput v-model="form.email" type="email" />
           </UFormGroup>
@@ -130,3 +154,4 @@ async function onSubmit(event: FormSubmitEvent<any>) {
     </UCard>
   </div>
 </template>
+
