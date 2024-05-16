@@ -8,7 +8,7 @@
         <!-- Description of -->
         <div class="mx-auto pt-20 text-primary-800 dark:text-gray-200">
           <h1 class="text-5xl md:text-8xl font-mono text-center ">HUE-MAN</h1>
-          <H2 class="text-center text-3xl md:text-4xl">Unlock Your Limits!</H2>
+          <H2 class="text-center text-3xl md:text-4xl">"Rise, Reflect, Inspire"</H2>
         </div>
         <div><HomeCarousel /></div>
         <div
