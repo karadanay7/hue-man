@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-[url('/bg.jpg')] dark:bg-[url('/darkbg.jpg')] min-h-screen ">
+  <div class="">
     <Header />
     <div
       class="text-gray-800 h-[calc(100vh_-_64px)] flex  flex-col  dark:text-gray-200  items-center justify-around "

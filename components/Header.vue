@@ -21,7 +21,7 @@
   
       <div
         v-if="isMenuOpen"
-        class="flex flex-col lg:hidden top-16 absolute z-10 mx-auto left-0 right-0 border  text-start  border-gray-300 dark:border-gray-600 justify-center py-2 items-center"
+        class="flex flex-col lg:hidden top-16 absolute z-10 mx-auto left-0 right-0 border  text-start  border-gray-300 dark:border-gray-600 justify-center py-2 items-center bg-[#FFF5F1] "
       >
         <div class="absolute top-0 w-full flex justify-end items-center">
           <NuxtLink

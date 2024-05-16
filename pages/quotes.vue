@@ -1,11 +1,11 @@
 <template>
     <Header/>
-   <UContainer class="flex flex-col items-center justify-center">
+   <UContainer class="flex flex-col items-center justify-center ">
 
-    <ul class="flex flex-col items-stretch gap-4 overflow-x-auto max-w-full md:w-2/3 py-3">
+    <ul class="flex flex-col items-stretch gap-4 overflow-x-auto max-w-full md:w-2/3 py-3 ">
           <li v-for="quote in quotes "
           :key="quote.id"
-          class="rounded-lg px-2"
+          class="rounded-lg mx-2 "
           > 
           <QuotesCard
           :author= "quote.author"

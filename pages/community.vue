@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-[url('/bg.jpg')] dark:bg-[url('/darkbg.jpg')] min-h-screen bg-fixed">
+  <div class="">
     <Header />
     <UContainer class="flex flex-col items-center justify-center">
       <div class="p-4 w-full md:w-1/2">
@@ -15,7 +15,7 @@
             </div>
             <div v-else>
               <!-- Placeholder if user or image not available -->
-              <div class="w-14 h-14 rounded-full bg-gray-300"></div>
+              <div class="w-14 h-14 rounded-full bg-[#FFF5F1]"></div>
             </div>
             <div class="w-full">
               <UTextarea

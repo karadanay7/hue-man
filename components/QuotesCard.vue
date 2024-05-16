@@ -1,14 +1,15 @@
 <template>
-    <UCard>
+    <UCard class="font-sans text-center">
       
   
-      <div class="mb-4">
-        <p>{{ author }}</p>
+     
+      <div class=" text-2xl font-quote">
+        <p><Icon name="fe:quote-left" class="-mt-4" size="16"/>{{ quote }}<Icon name="fe:quote-right" class="-mt-4" size="16"/></p>
+        </div>
+        <div class="mt-4  font-author ">
+        <p class="border-b inline-block text-lg">{{ author }}</p>
       </div>
   
-      <div class="flex items-center justify-start gap-4">
-        <p>{{ quote }}</p>
-        </div>
       
     
     </UCard>

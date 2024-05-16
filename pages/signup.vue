@@ -96,7 +96,7 @@ async function onSubmit(event: FormSubmitEvent<any>) {
 </script>
 
 <template>
-  <div class="flex items-center justify-center h-screen p-4 bg-[url('/bg.jpg')] dark:bg-[url('/darkbg.jpg')]">
+  <div class="flex items-center justify-center h-screen p-4 ">
     <UCard
       :ui="{
         ring: '',
