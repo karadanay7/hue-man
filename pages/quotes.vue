@@ -1,22 +1,30 @@
 <template>
-    <Header/>
-   <UContainer class="flex flex-col items-center justify-center ">
-
-    <ul class="flex flex-col items-stretch gap-4 overflow-x-auto max-w-full md:w-2/3 py-3 ">
-          <li v-for="quote in quotes "
-          :key="quote.id"
-          class="rounded-lg mx-2 "
-          > 
-          <QuotesCard
-          :author= "quote.author"
-          :quote = "quote.quote"
-          />
-          </li>
-        </ul>
-   </UContainer>
+  <Header/>
+  <div class="flex items-center justify-center  min-h-[calc(100vh-64px)]">
+    <UContainer class="flex flex-col items-center justify-center">
+    <QuotesCard
+      v-if="currentQuote"
+      :author="currentQuote.author"
+      :quote="currentQuote.quote"
+    />
+    <div v-else>
+      <p>No more quotes</p>
+    </div>
+    <div class="mt-20">
+      <button @click="getNextQuote" class="bg-orange-400 hover:bg-pink-600 text-white font-bold py-2 px-4 rounded">
+        Next Quote
+      </button>
+    </div>
+  </UContainer>
+  </div>
+ 
 </template>
 
+
 <script setup>
+
+
+
 
 const quotes = [
   {
@@ -140,6 +148,18 @@ const quotes = [
     category: "inspirational"
   }
 ];
+const currentQuoteIndex = ref(0);
+
+const currentQuote = ref(quotes[currentQuoteIndex.value]);
+
+const getNextQuote = () => {
+  if (currentQuoteIndex.value < quotes.length - 1) {
+    currentQuoteIndex.value++;
+    currentQuote.value = quotes[currentQuoteIndex.value];
+  } else {
+    currentQuote.value = null;
+  }
+}
 
 
 </script>
