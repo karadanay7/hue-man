@@ -88,9 +88,9 @@
     </div>
   </UContainer>
 </template>
-<script setup>
+<script setup >
 const supabase = useSupabaseClient();
-const user = useSupabaseUser();
+
 const isMenuOpen = ref(false);
 const toggleMenu = () => (isMenuOpen.value = !isMenuOpen.value);
 

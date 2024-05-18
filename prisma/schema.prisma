@@ -1,0 +1,137 @@
+
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+// Define other models for your motivation app
+model UserInfos {
+  id            Int          @id @default(autoincrement())
+  userId        String       @unique
+  username      String?
+  bio           String?
+  avatar        String?      // URL to user's avatar
+  city          String?      // User's city
+  state         String?      // User's state
+  country       String?      // User's country
+  email         String?      @unique
+  socialLinks   SocialLinks[] // User's social media profiles
+  interests     Interests[]   // User's interests or hobbies
+  // Add more relationships as needed
+}
+model SocialLinks {
+  id        Int      @id @default(autoincrement())
+  platform  String   // Social media platform (e.g., Twitter, Facebook)
+  url       String   // URL to user's profile on the platform
+  userId    Int      // Reference to the user
+  userInfo  UserInfos @relation(fields: [userId], references: [id])
+}
+model Interests {
+  id        Int      @id @default(autoincrement())
+  name      String   // Name of the interest or hobby
+  userId    Int      // Reference to the user
+  userInfo  UserInfos @relation(fields: [userId], references: [id])
+}
+
+// Model for targets that users set for themselves
+model Targets {
+  id             Int        @id @default(autoincrement())
+  description    String
+  goal           String
+  userId         String       // Reference to the user who set the target
+  isCompleted    Boolean    @default(false)  // Indicates whether the target is completed
+  createdAt      DateTime   @default(now())
+  updatedAt      DateTime   @updatedAt
+  targetProgresses TargetProgresses[]
+}
+// Model for tracking user's progress on targets
+model TargetProgresses {
+  id          Int      @id @default(autoincrement())
+  targetId    Int
+  targets     Targets   @relation(fields: [targetId], references: [id])
+  userId      String      // Reference to the user who logged the target progress
+  details     String
+  createdAt   DateTime @default(now())
+}
+
+// Model for habits that users want to establish or maintain
+model Habits {
+  id          Int      @id @default(autoincrement())
+  description String
+  goal        String
+  userId      String     // Reference to the user who has the habit
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  
+  // Add the opposite relation field to HabitProgress
+  progresses  HabitProgresses[]
+}
+
+model HabitProgresses {
+  id        Int      @id @default(autoincrement())
+  habitId   Int
+  habits    Habits    @relation(fields: [habitId], references: [id])
+  userId    String     // Reference to the user who logged the habit progress
+  completed Boolean
+  amount    Float?   // For habits like drinking water
+  createdAt DateTime @default(now())
+}
+
+// Model for recording posts shared by users
+model Posts {
+  id        Int      @id @default(autoincrement())
+  content   String
+  userId    String     // Reference to the user who created the post
+  username  String
+  createdAt DateTime @default(now())
+}
+
+// Model for recording likes on posts
+model Likes {
+  id      Int  @id @default(autoincrement())
+  userId  String  // Reference to the user who liked the post
+  postId  Int  // Reference to the post that was liked
+}
+
+// Model for recording retweets of posts
+model Retweets {
+  id      Int  @id @default(autoincrement())
+  userId  String  // Reference to the user who retweeted the post
+  postId  Int  // Reference to the post that was retweeted
+}
+
+// Model for recording user's diary entries
+model Diaries {
+  id        Int      @id @default(autoincrement())
+  content   String
+  userId    String      // Reference to the user who wrote the diary entry
+  createdAt DateTime @default(now())
+}
+
+// Model for categorizing motivational quotes
+model Categories {
+  id     Int     @id @default(autoincrement())
+  name   String  @unique
+  quotes Quotes[]
+}
+
+// Model for storing motivational quotes
+model Quotes {
+  id         Int      @id @default(autoincrement())
+  content    String
+  categoryId Int
+  category   Categories @relation(fields: [categoryId], references: [id])
+}
+
+// Model for recording user's selected categories
+model UserCategories {
+  id         Int      @id @default(autoincrement())
+  userId     String      // Reference to the user who selected the category
+  categoryId Int      // Reference to the selected category
+}
+
+

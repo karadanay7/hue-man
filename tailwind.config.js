@@ -17,7 +17,8 @@ module.exports = {
     extend: {
       fontFamily: {
         author: ["Fasthand"],
-        auote: ["Roboto Condensed"]
+        auote: ["Roboto Condensed"],
+        hueman:["Montserrat"],
       },
     },
   },

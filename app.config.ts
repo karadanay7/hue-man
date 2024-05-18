@@ -8,7 +8,7 @@ export default defineAppConfig({
       divide: "divide-y divide-gray-200 dark:divide-gray-600",
       ring: "ring-1 ring-green-600 dark:ring-gray-700",
 
-      shadow: "shadow-lg  shadow-gray-400 dark:shadow-gray-800 dark:shadow-lg",
+      shadow: "shadow-lg  shadow-gray-300 dark:shadow-gray-800 dark:shadow-lg",
       header: {
         padding: "px-4 py-3 sm:px-6",
       },
