@@ -3,7 +3,7 @@
     <!-- Header component -->
     <Header></Header>
 
-    <UContainer class="flex flex-col items-center justify-center">
+    <UContainer class="flex flex-col items-center justify-center overflow-hidden">
       <!-- Create a new post section -->
       <div class="p-4 w-full md:w-1/2">
         <div class="userpost flex items-center gap-2">
@@ -27,7 +27,7 @@
       </div>
 
       <!-- Display all posts -->
-      <div class="w-full ">
+      <div class="w-full lg:w-2/3 ">
         <div v-if="posts"  > 
         
         <ul class=" flex flex-col gap-3">

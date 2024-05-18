@@ -64,8 +64,11 @@ const formatDate = (timeString: string) => {
   const timeDiff = currentDate.getTime() - postDate.getTime();
   const minutes = Math.floor(timeDiff / (1000 * 60));
   const hours = Math.floor(timeDiff / (1000 * 60 * 60));
+  const days = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
 
-  if (hours >= 1) {
+  if (days >= 1) {
+    return `${days}d `;
+  } else if (hours >= 1) {
     return `${hours}h `;
   } else if (minutes > 0) {
     return `${minutes}m `;
@@ -73,4 +76,5 @@ const formatDate = (timeString: string) => {
     return 'just now';
   }
 };
+
 </script>

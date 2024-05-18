@@ -109,7 +109,7 @@
 }
 
 .layer:first-child:after {
-  color: #fff;
+  color: #e6dcdc;
   text-shadow: none;
 }
 
