@@ -96,7 +96,8 @@
     });
     if (error) {
       err.value = error.message;
-    }
+    } 
+  
   }
   
   async function onSubmit(event: FormSubmitEvent<any>) {

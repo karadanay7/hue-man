@@ -1,7 +1,7 @@
 <template>
   <UContainer>
     <div class="flex flex-col items-center justify-center overflow-hidden gap-3">
-      <div v-if="user" class="w-full flex items-center justify-center  w-full lg:w-2/3">
+      <div v-if="user" class=" flex items-center justify-center  w-full lg:w-2/3">
         <div class="m-4 items-center w-full flex gap-2">
           <div>
             <img class="h-14 w-14 rounded-full" src="https://static.vecteezy.com/system/resources/previews/002/002/257/non_2x/beautiful-woman-avatar-character-icon-free-vector.jpg" alt="">

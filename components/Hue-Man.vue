@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="stage text-8xl font-bold font-hueman  ">
+        <div class="stage text-8xl font-bold font-hueman   ">
           
   <div class="layer">  </div>
   <div class="layer"></div>

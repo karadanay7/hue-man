@@ -4,7 +4,7 @@
     <div  class="">
       <Header/>
     </div>
-   <div class="flex-grow" >
+   <div class="flex-grow py-4" >
     <NuxtPage  />
    </div>
    
