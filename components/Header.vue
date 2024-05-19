@@ -27,7 +27,7 @@
 
       <!-- Sign-in/out and theme toggle -->
       <div class="mt-auto flex flex-col gap-2">
-        <button  @click="pushProfile" class="flex  items-center justify-start gap-2 bg-primary dark:bg-green-600 p-2 rounded-full hover:scale-110  border-2 border-hidden  dark:border-white border-gray-600 hover:border-solid ">
+        <button  v-if="user" @click="pushProfile" class="flex  items-center justify-start gap-2 bg-primary dark:bg-green-600 p-2 rounded-full hover:scale-110  border-2 border-hidden  dark:border-white border-gray-600 hover:border-solid ">
           <div>
             <img class="h-8 w-8 rounded-full" src="https://static.vecteezy.com/system/resources/previews/002/002/257/non_2x/beautiful-woman-avatar-character-icon-free-vector.jpg" alt="">
           </div>
