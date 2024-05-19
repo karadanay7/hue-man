@@ -1,5 +1,5 @@
 <template>
-  <div class="">
+
    
     <div
       class="text-gray-800 h-screen flex  flex-col  dark:text-gray-200  items-center justify-around "
@@ -28,7 +28,7 @@
         <div class=""><HomeCarousel /></div>
       </div>
         
-    </div>
+
 
 </template>
 
