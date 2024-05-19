@@ -1,5 +1,5 @@
 <template>
-  <Header />
+  
 
   <UContainer class="flex flex-col items-center justify-center ">
     <h1 class="text-center text-lg md:text-2xl text-green-600">
@@ -56,11 +56,14 @@
   </UContainer>
 </template>
 
-<script setup >
+<script setup lang="ts" >
 
+definePageMeta({
+  middleware: 'auth'
+})
 
 const user = useSupabaseUser();
-const router = useRouter();
+
 
 const userId = user.value?.id;
 const diariesResponse = await useFetch(`/api/prisma/get-diaries/${userId}`);

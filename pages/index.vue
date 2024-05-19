@@ -1,6 +1,6 @@
 <template>
   <div class="">
-    <Header></Header>
+   
     <div
       class="text-gray-800 h-screen flex  flex-col  dark:text-gray-200  items-center justify-around "
     >
@@ -32,4 +32,4 @@
 
 </template>
 
-]
+

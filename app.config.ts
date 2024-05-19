@@ -21,6 +21,10 @@ export default defineAppConfig({
     modal: {
       container: "flex min-h-full items-center justify-center text-center",
     },
+    notifications: {
+      // Show toasts at the top right of the screen
+      position: 'top-0 bottom-auto'
+    },
     carousel:{
       indicators: {
         wrapper: ' flex items-center justify-center gap-3 bottom-0 inset-x-0',

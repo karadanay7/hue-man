@@ -1,5 +1,5 @@
 <template>
-  <Header />
+  
   <div class="flex items-center justify-center min-h-[calc(100vh-64px)]">
     <UContainer class="flex flex-col items-center justify-center">
       <div v-if="currentQuote" class="flex flex-col items-center rounded-3xl border-2 text-center justify-center">

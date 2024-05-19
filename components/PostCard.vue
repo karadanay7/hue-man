@@ -40,15 +40,11 @@
 </template>
 
 <script setup lang="ts">
-type Likes = {
-  id: string;
-  userId: string
-  postId: number;
-}
+
 type Props = {
   userName: string | undefined;
   content: string | undefined;
-  likes: Likes;
+  likes: object | undefined;
   createdAt : string;
 }
 defineProps<Props>();
