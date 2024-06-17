@@ -2,16 +2,15 @@
   
 
   <UContainer class="flex flex-col items-center justify-center ">
-    <h1 class="text-center text-lg md:text-2xl text-green-600">
+    <div class="  flex flex-col gap-4 w-full lg:w-2/3  ">
+      <h1 class="text-center text-lg md:text-3xl text-green-600">
       Welcome to your Free-place...
     </h1>
-    <p class="text-gray-400 text-xs md:text-sm w-full">
-      Take a moment to reflect on your journey. How are you progressing towards
-      your goals? What challenges have you encountered, and how did you overcome
-      them? Feel free to share your thoughts, experiences, and any breakthroughs
-      you've had along the way. This is your space to document and celebrate
-      your personal growth.
+    <p class="text-gray-300 text-md md:text-lg w-full text-center">
+      Take a moment to reflect on your journey. Write down your thoughts, feelings, and experiences.
     </p>
+    </div>
+   
     <div class="p-4 w-full lg:w-1/2 ">
     
         <div class="flex items-center gap-2">

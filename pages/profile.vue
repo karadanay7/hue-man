@@ -2,7 +2,7 @@
     <UContainer>
         <div class="text-gray-800 dark:text-gray-200  flex flex-col items-center">
       <!-- Profile Header -->
-      <div class="w-full bg-primary dark:bg-green-600 p-6 flex justify-between items-center rounded-xl">
+      <div class="w-2/3 bg-primary dark:bg-green-600 p-6 flex justify-between items-center rounded-xl">
         <div class="flex items-center gap-4">
           <img
             class="h-20 w-20 rounded-full"
@@ -10,18 +10,18 @@
             alt="Profile Picture"
           />
           <div>
-            <h1 class="text-3xl font-semibold text-gray-100">Jane Doe</h1>
-            <p class="text-xl text-gray-300">jane.doe@example.com</p>
+            <h1 class="text-2xl font-semibold text-gray-100">Jane Doe</h1>
+            <p class="text-md text-gray-300">jane.doe@example.com</p>
           </div>
         </div>
         <button class="flex items-center gap-2 bg-white dark:bg-gray-800 p-3 rounded-full border-2 border-gray-600 dark:border-white hover:scale-110 transition-transform duration-200 ease-in-out">
           <Icon name="ant-design:edit-outlined" size="30" />
-          <span class="text-xl font-semibold text-gray-600 dark:text-gray-100">Edit Profile</span>
+          <span class="text-md font-semibold text-gray-600 dark:text-gray-100">Edit Profile</span>
         </button>
       </div>
   
       <!-- Profile Content -->
-      <div class="w-full flex flex-col items-center gap-4 p-6">
+      <div class="w-2/3 flex flex-col items-center gap-4 p-6">
         <!-- Personal Information Section -->
         <div class="w-full max-w-4xl bg-gray-100 dark:bg-gray-800 p-6 rounded-lg shadow-md">
           <h2 class="text-2xl font-semibold mb-4">Personal Information</h2>
