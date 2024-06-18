@@ -27,21 +27,24 @@ model UserInfos {
   targetProgresses TargetProgresses[] // User's progress on targets
   habits           Habits[] // User's habits
   habitProgresses  HabitProgresses[] // User's progress on habits
+  Retweets         Retweets[]
+  Diaries          Diaries[]
+  UserCategories   UserCategories[]
 }
 
 model Interests {
   id       Int       @id @default(autoincrement())
   name     String // Name of the interest or hobby
-  userId   Int // Reference to the user
-  userInfo UserInfos @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId   String // Reference to the user, should match the `userId` in `UserInfos`
+  userInfo UserInfos @relation(fields: [userId], references: [userId], onDelete: Cascade)
 }
 
 model SocialLinks {
   id       Int       @id @default(autoincrement())
   platform String // Social media platform (e.g., Twitter, Facebook)
   url      String // URL to user's profile on the platform
-  userId   Int // Reference to the user
-  userInfo UserInfos @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId   String // Reference to the user
+  userInfo UserInfos @relation(fields: [userId], references: [userId], onDelete: Cascade)
 }
 
 // Model for targets that users set for themselves
@@ -49,8 +52,8 @@ model Targets {
   id               Int                @id @default(autoincrement())
   description      String
   goal             String
-  userId           Int // Reference to the user who set the target
-  userInfo         UserInfos          @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId           String // Reference to the user who set the target
+  userInfo         UserInfos          @relation(fields: [userId], references: [userId], onDelete: Cascade)
   isCompleted      Boolean            @default(false) // Indicates whether the target is completed
   createdAt        DateTime           @default(now())
   updatedAt        DateTime           @updatedAt
@@ -60,11 +63,11 @@ model Targets {
 // Model for tracking user's progress on targets
 model TargetProgresses {
   id        Int       @id @default(autoincrement())
-  targetId  Int
+  targetId  Int // Reference to the target
   targets   Targets   @relation(fields: [targetId], references: [id], onDelete: Cascade)
-  userId    Int // Reference to the user who logged the target progress
-  userInfo  UserInfos @relation(fields: [userId], references: [id], onDelete: Cascade)
-  details   String
+  userId    String // Reference to the user who logged the target progress
+  userInfo  UserInfos @relation(fields: [userId], references: [userId], onDelete: Cascade)
+  details   String // Details of the progress
   createdAt DateTime  @default(now())
 }
 
@@ -73,8 +76,8 @@ model Habits {
   id          Int               @id @default(autoincrement())
   description String
   goal        String
-  userId      Int // Reference to the user who has the habit
-  userInfo    UserInfos         @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId      String // Reference to the user who has the habit
+  userInfo    UserInfos         @relation(fields: [userId], references: [userId], onDelete: Cascade)
   createdAt   DateTime          @default(now())
   updatedAt   DateTime          @updatedAt
   progresses  HabitProgresses[]
@@ -82,54 +85,60 @@ model Habits {
 
 model HabitProgresses {
   id        Int       @id @default(autoincrement())
-  habitId   Int
+  habitId   Int // Reference to the habit
   habits    Habits    @relation(fields: [habitId], references: [id], onDelete: Cascade)
-  userId    Int // Reference to the user who logged the habit progress
-  userInfo  UserInfos @relation(fields: [userId], references: [id], onDelete: Cascade)
-  completed Boolean
-  amount    Float? // For habits like drinking water
+  userId    String // Reference to the user who logged the habit progress
+  userInfo  UserInfos @relation(fields: [userId], references: [userId], onDelete: Cascade)
+  completed Boolean // Indicates if the habit was completed
+  amount    Float? // Amount for habits like drinking water
   createdAt DateTime  @default(now())
 }
 
 // Model for recording posts shared by users
 model Posts {
-  id        Int       @id @default(autoincrement())
+  id        Int        @id @default(autoincrement())
   content   String
-  userId    Int // Reference to the user who created the post
-  userInfo  UserInfos @relation(fields: [userId], references: [id], onDelete: Cascade)
-  createdAt DateTime  @default(now())
+  userId    String // Reference to the user who created the post
+  userInfo  UserInfos  @relation(fields: [userId], references: [userId], onDelete: Cascade)
+  username  String  
+  createdAt DateTime   @default(now())
   likes     Likes[] // Relation to Likes model
+  Retweets  Retweets[]
 }
 
 // Model for recording likes on posts
 model Likes {
   id       Int       @id @default(autoincrement())
-  userId   Int // Reference to the user who liked the post
-  userInfo UserInfos @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId   String // Reference to the user who liked the post
+  userInfo UserInfos @relation(fields: [userId], references: [userId], onDelete: Cascade)
   postId   Int // Reference to the post that was liked
   post     Posts     @relation(fields: [postId], references: [id], onDelete: Cascade)
 }
 
 // Model for recording retweets of posts
 model Retweets {
-  id     Int    @id @default(autoincrement())
-  userId String // Reference to the user who retweeted the post
-  postId Int // Reference to the post that was retweeted
+  id       Int       @id @default(autoincrement())
+  userId   String // Reference to the user who retweeted the post
+  userInfo UserInfos @relation(fields: [userId], references: [userId], onDelete: Cascade)
+  postId   Int // Reference to the post that was retweeted
+  post     Posts     @relation(fields: [postId], references: [id], onDelete: Cascade)
 }
 
 // Model for recording user's diary entries
 model Diaries {
-  id        Int      @id @default(autoincrement())
+  id        Int       @id @default(autoincrement())
   content   String
   userId    String // Reference to the user who wrote the diary entry
-  createdAt DateTime @default(now())
+  userInfo  UserInfos @relation(fields: [userId], references: [userId], onDelete: Cascade)
+  createdAt DateTime  @default(now())
 }
 
 // Model for categorizing motivational quotes
 model Categories {
-  id     Int      @id @default(autoincrement())
-  name   String   @unique
-  quotes Quotes[]
+  id             Int              @id @default(autoincrement())
+  name           String           @unique
+  quotes         Quotes[]
+  UserCategories UserCategories[]
 }
 
 // Model for storing motivational quotes
@@ -142,7 +151,9 @@ model Quotes {
 
 // Model for recording user's selected categories
 model UserCategories {
-  id         Int    @id @default(autoincrement())
+  id         Int        @id @default(autoincrement())
   userId     String // Reference to the user who selected the category
+  userInfo   UserInfos  @relation(fields: [userId], references: [userId], onDelete: Cascade)
   categoryId Int // Reference to the selected category
+  category   Categories @relation(fields: [categoryId], references: [id], onDelete: Cascade)
 }

@@ -11,6 +11,7 @@
           />
           <div>
             <h1 class="text-2xl font-semibold text-gray-100">Jane Doe</h1>
+            {{ user }}
             <p class="text-md text-gray-300">jane.doe@example.com</p>
           </div>
         </div>
@@ -83,7 +84,7 @@
   
   <script setup>
 
-  
+const user = useSupabaseUser();
   const isDark = ref(false);
   const emailNotifications = ref(true);
   const twoFactorAuth = ref(false);

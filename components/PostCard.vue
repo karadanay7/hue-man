@@ -27,7 +27,7 @@
         <!-- Like Button -->
         <div class="flex items-center gap-1 hover:text-green-600" @click="likePost">
           <div><Icon name="i-heroicons-heart" size="20" class="mb-1 hover:scale-125" /></div>
-          <div class="text-sm">{{ likes }}</div>
+          <div class="text-sm">{{ likes?.lenght }}</div>
         </div>
 
         <!-- Retweet Button -->
@@ -51,7 +51,7 @@ defineProps<Props>();
 
 // Function to handle liking a post (you can implement this)
 const likePost = () => {
-  // Implement your logic to like the post
+  
 };
 const formatDate = (timeString: string) => {
   const postDate = new Date(timeString);

@@ -15,7 +15,7 @@
         <p>No more quotes</p>
       </div>
       <div class="mt-20">
-        <button @click="getNextQuote" class="bg-orange-400 border-2 border-red-400 dark:border-white hover:bg-pink-600 text-white font-bold py-2 px-4 rounded-lg">
+        <button @click="getNextQuote" class="bg-orange-400 border-2 border-red-400 dark:border-white hover:bg-rose-500 text-white font-bold py-2 px-4 rounded-lg">
           <p class="hover:scale-110">Next Quote</p>
         </button>
       </div>
