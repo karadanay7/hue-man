@@ -1,6 +1,7 @@
 <template>
+
   <UContainer>
-    <div class="flex flex-col items-center justify-center overflow-hidden gap-3  pl-10">
+    <div class="flex flex-col items-center justify-center  gap-3  pl-10">
       <div v-if="user" class=" flex items-center justify-center  w-full lg:w-2/3 ">
         <div class="m-4 items-center w-full flex gap-2 ">
           <div>
@@ -37,6 +38,7 @@
       </div>
     </div>
   </UContainer>
+
 </template>
 
 

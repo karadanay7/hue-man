@@ -1,4 +1,5 @@
 <template>
+ 
     <UContainer>
         <div class="text-gray-800 dark:text-gray-200  flex flex-col items-center">
       <!-- Profile Header -->
@@ -79,7 +80,7 @@
       </div>
     </div>
     </UContainer>
-   
+ 
   </template>
   
   <script setup>

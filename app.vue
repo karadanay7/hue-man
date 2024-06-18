@@ -1,11 +1,11 @@
 <template>
   <div class="bg-[url('/bg.jpg')] dark:bg-[url('/darkbg.jpg')] bg-fixed bg-cover min-h-screen w-full flex flex-col">
     <!-- Header Component -->
-    <div>
+    <div class="z-10">
       <Header />
     </div>
     <!-- Main Content Area -->
-    <div class="flex-grow py-4">
+    <div class="flex-grow ">
       <NuxtPage />
     </div>
     <!-- Notifications -->
@@ -15,9 +15,5 @@
 
 <style scoped>
 /* Ensuring that the background covers the whole viewport and is fixed */
-.bg-fixed {
-  background-attachment: fixed;
-  background-size: cover;
-  background-repeat: no-repeat;
-}
+
 </style>
