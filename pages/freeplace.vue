@@ -1,7 +1,8 @@
 <template>
   
 
-  <UContainer class="flex flex-col items-center justify-center ">
+  <UContainer >
+    <div class="flex flex-col items-center justify-center mt-8 pl-12 ">
     <div class="  flex flex-col gap-4 w-full lg:w-2/3  ">
       <h1 class="text-center text-lg md:text-3xl text-green-600">
       Welcome to your Free-place...
@@ -52,6 +53,7 @@
     </div>
     <div v-else>nothing to display</div>
   </div>
+</div>
   </UContainer>
 </template>
 
