@@ -86,9 +86,11 @@ const isDark = computed({
 });
 const navItems = [
   { id: 1, icon: "i-heroicons-home", to: "/", label: "Home" },
-  { id: 2, icon: "i-heroicons-globe-europe-africa-solid", to: "/community", label: "Community" },
-  { id: 3, icon: "i-heroicons-light-bulb", to: "/quotes", label: "Quotes" },
-  { id: 4, icon: "i-heroicons-book-open", to: "/freeplace", label: "Free-Place" }
+  { id: 2, icon: "i-heroicons-map", to: "/myjourney", label: "My Journey" },
+  { id: 3, icon: "i-heroicons-globe-europe-africa-solid", to: "/community", label: "Community" },
+  { id: 4, icon: "i-heroicons-light-bulb", to: "/quotes", label: "Quotes" },
+  { id: 5, icon: "i-heroicons-book-open", to: "/freeplace", label: "Free-Place" },
+
 ];
 
 </script>
