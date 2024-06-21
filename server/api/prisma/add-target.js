@@ -1,4 +1,4 @@
-// backend/api/prisma/add-habit.js
+// backend/api/prisma/add-target.js
 
 import { PrismaClient } from '@prisma/client';
 
@@ -15,13 +15,13 @@ export default defineEventHandler(async (event) => {
       },
     });
 
-    // Create new habit with author field populated with the username
-    const habit = await prisma.habit.create({
+    // Create new target with author field populated with the username
+    const target = await prisma.target.create({
       data: {
         description: body.description,
         goal: body.goal,
         userId: body.userId,
-   
+       
         checkpoints: body.checkpoints, // Update to include checkpoints
         // Include other fields as needed
       },
@@ -29,13 +29,13 @@ export default defineEventHandler(async (event) => {
 
     return {
       statusCode: 200,
-      body: JSON.stringify(habit),
+      body: JSON.stringify(target),
     };
   } catch (error) {
-    console.error('Error adding habit:', error);
+    console.error('Error adding target:', error);
     return {
       statusCode: 500,
-      body: JSON.stringify({ message: 'Error adding habit' }),
+      body: JSON.stringify({ message: 'Error adding target' }),
     };
   }
 });
