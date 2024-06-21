@@ -58,7 +58,7 @@ model Target {
   createdAt        DateTime           @default(now())
   updatedAt        DateTime           @updatedAt
   targetProgresses TargetProgress[]   // User's progress on targets
-  checkpoints      Checkpoint[]       // Checkpoints associated with the target
+  checkpoints      String[]       // Checkpoints associated with the target
 }
 
 // Model for tracking user's progress on targets
@@ -82,7 +82,7 @@ model Habit {
   createdAt   DateTime          @default(now())
   updatedAt   DateTime          @updatedAt
   habitProgresses HabitProgress[] // User's progress on habits
-  checkpoints    Checkpoint[]    // Checkpoints associated with the habit
+  checkpoints    String[]    // Checkpoints associated with the habit
 }
 
 model HabitProgress {
@@ -109,20 +109,7 @@ model Post {
 }
 
 // Model for checkpoints associated with habits and targets
-model Checkpoint {
-  id         Int        @id @default(autoincrement())
-  frequency  String[]   // Enum for checkpoint frequency (e.g., "HOURLY", "DAILY", "WEEKLY", "MONTHLY")
-  hours      String[]  // Array of hours for hourly frequency
-  days       String[]  // Array of days for daily or weekly frequency
-  months     String[]  // Array of months for monthly frequency
-  createdAt  DateTime   @default(now())
 
-  // Relationships
-  target     Target?    @relation(fields: [targetId], references: [id])
-  targetId   Int?
-  habit      Habit?     @relation(fields: [habitId], references: [id])
-  habitId    Int?
-}
 // Model for recording likes on posts
 model Like {
   id       Int       @id @default(autoincrement())

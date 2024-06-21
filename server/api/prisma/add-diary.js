@@ -13,7 +13,7 @@ export default defineEventHandler(async (event) => {
    
 
     // Create new post with author field populated with the username
-    const post = await prisma.diaries.create({
+    const post = await prisma.diary.create({
       data: {
         content: body.content,
        

@@ -17,12 +17,12 @@ export default defineEventHandler(async (event) => {
     });
 
     // Create new post with author field populated with the username
-    const post = await prisma.posts.create({
+    const post = await prisma.post.create({
       data: {
         content: body.content,
         username: userInfo?.username,
         userId: body.userId, // Populate the author field with the username
-        // Include other fields as needed
+       
       },
     });
 
