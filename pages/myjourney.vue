@@ -24,6 +24,7 @@ const resetForm = () => {
 </script>
 
 <template>
+    <div class="flex items-center justify-center h-screen">
     <UContainer class="py-8">
         <div class="flex flex-col items-center justify-center gap-3 pl-10">
             <div class="w-full lg:w-2/3">
@@ -125,5 +126,6 @@ const resetForm = () => {
             </div>
         </div>
     </UContainer>
+</div>
 </template>
 
