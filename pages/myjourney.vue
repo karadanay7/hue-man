@@ -24,23 +24,27 @@
                             <h2 class="text-2xl font-semibold mb-4">Create a New Habit</h2>
                             <p class="mb-4">Define a new habit you want to establish in your daily routine.</p>
                             <div>
+                                <p>Habit Description:</p>
                                 <UInput
                                     v-model="habitDescription"
                                     label="Habit Description"
-                                    placeholder="e.g., Drink 8 glasses of water"
+                                    placeholder="e.g., Drink 8 glasses of water everyday"
                                     class="mb-4"
                                 />
+                                <p>Habit Goal:</p>
                                 <UInput
                                     v-model="habitGoal"
-                                    type="number"
+                                    type="text"
                                     label="Goal"
-                                    placeholder="e.g., 10"
+                                    placeholder="e.g., Drink Water"
                                     class="mb-4"
                                 />
-                                <UInput
-                                    v-model="habitCheckpointsRaw"
-                                    label="Checkpoints"
-                                    placeholder="e.g., Monday, Wednesday"
+                                <p>Habit Checkpoints:</p>
+                                <USelect
+                                    v-model="habitFrequency"
+                                    label="Frequency"
+                                    :options="['Daily', 'Weekly', 'Monthly']"
+                                    placeholder="Select frequency"
                                     class="mb-4"
                                 />
                             </div>
@@ -65,18 +69,24 @@
                                     placeholder="e.g., Lose 10 pounds"
                                     class="mb-4"
                                 />
+                                <p>Target Deadline:</p>
+                                
                                 <UInput
                                     v-model="targetDeadline"
                                     type="date"
                                     label="Deadline"
                                     class="mb-4"
+                                    placeholder="Target Deadline"
                                 />
-                                <UInput
-                                    v-model="targetCheckpointsRaw"
-                                    label="Checkpoints"
-                                    placeholder="e.g., End of Week 1, End of Week 2"
+                                <p>Target Checkpoints:</p>
+                                <USelect
+                                    v-model="targetFrequency"
+                                    label="Frequency"
+                                    :options="['Daily', 'Weekly', 'Monthly']"
+                                    placeholder="Select frequency"
                                     class="mb-4"
                                 />
+                              
                             </div>
                             <div class="flex justify-end space-x-4">
                                 <UButton
@@ -98,29 +108,27 @@
 
 const user = useSupabaseUser();
 const toast = useToast();
-const userId = computed(() => user.value?.id);
+const userId = ref<string | null>(null);
 
 const isHabitModalOpen = ref(false);
 const isTargetModalOpen = ref(false);
 
 const habitDescription = ref('');
-const habitGoal = ref(0);
-const habitCheckpointsRaw = ref('');
+const habitGoal = ref("");
+const habitFrequency = ref('');
 const habitCheckpoints = ref<string[]>([]);
 
 const targetDescription = ref('');
 const targetDeadline = ref('');
-const targetCheckpointsRaw = ref('');
+const targetFrequency = ref('');
 const targetCheckpoints = ref<string[]>([]);
 
 const toggleHabitModal = () => {
     isHabitModalOpen.value = !isHabitModalOpen.value;
-
 };
 
 const toggleTargetModal = () => {
     isTargetModalOpen.value = !isTargetModalOpen.value;
-  
 };
 
 const resetForm = () => {
@@ -128,24 +136,25 @@ const resetForm = () => {
     isTargetModalOpen.value = false;
     habitDescription.value = '';
     habitGoal.value = 0;
-    habitCheckpointsRaw.value = '';
+    habitFrequency.value = '';
+    habitCheckpoints.value = [];
     targetDescription.value = '';
     targetDeadline.value = '';
-    targetCheckpointsRaw.value = '';
+    targetFrequency.value = '';
+    targetCheckpoints.value = [];
 };
 
 const saveHabit = async () => {
-    if (!userId.value || !habitDescription.value || habitGoal.value <= 0 || !habitCheckpointsRaw.value) {
+    if (!userId.value || !habitDescription.value || habitGoal.value <= 0 || habitFrequency.value === '' || habitCheckpoints.value.length === 0) {
         toast.error('Please fill all fields correctly.');
         return;
     }
-
-    habitCheckpoints.value = habitCheckpointsRaw.value.split(',').map(cp => cp.trim());
 
     const requestBody = {
         userId: userId.value,
         description: habitDescription.value,
         goal: habitGoal.value,
+        frequency: habitFrequency.value,
         checkpoints: habitCheckpoints.value,
     };
 
@@ -172,17 +181,16 @@ const saveHabit = async () => {
 };
 
 const saveTarget = async () => {
-    if (!userId.value || !targetDescription.value || !targetDeadline.value || !targetCheckpointsRaw.value) {
+    if (!userId.value || !targetDescription.value || !targetDeadline.value || targetFrequency.value === '' || targetCheckpoints.value.length === 0) {
         toast.error('Please fill all fields correctly.');
         return;
     }
-
-    targetCheckpoints.value = targetCheckpointsRaw.value.split(',').map(cp => cp.trim());
 
     const requestBody = {
         userId: userId.value,
         description: targetDescription.value,
         deadline: targetDeadline.value,
+        frequency: targetFrequency.value,
         checkpoints: targetCheckpoints.value,
     };
 
