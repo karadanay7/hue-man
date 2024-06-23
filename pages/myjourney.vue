@@ -3,7 +3,7 @@
         <UContainer class="py-8">
             <div class="flex flex-col items-center justify-center gap-3 pl-10">
                 <div class="w-full lg:w-2/3">
-                    <h1 class="text-3xl font-bold text-center mb-6">Choose Your Focus</h1>
+                    <h1 class="text-4xl font-bold text-center mb-6 ">Choose Your Focus</h1>
                     <p class="text-center mb-8">
                         Select whether you want to create a new habit or set a target for yourself.
                         Habits are consistent actions you perform regularly, while targets are specific goals
@@ -20,7 +20,7 @@
                         />
                     </div>
                     <UModal v-model="isHabitModalOpen" @close="resetForm">
-                        <div class="p-8  rounded-lg shadow-xl">
+                        <div class="p-8  rounded-lg shadow-xl ">
                             <h2 class="text-2xl font-semibold mb-4">Create a New Habit</h2>
                             <p class="mb-4">Define a new habit you want to establish in your daily routine.</p>
                             <div>
@@ -40,13 +40,21 @@
                                     class="mb-4"
                                 />
                                 <p>Habit Checkpoints:</p>
-                                <USelect
-                                    v-model="habitFrequency"
-                                    label="Frequency"
-                                    :options="['Daily', 'Weekly', 'Monthly']"
-                                    placeholder="Select frequency"
+                            
+                                <USelect v-if="habitFrequency=='Daily'"
+                                    v-model="habitCheckpoints"
+                                    label="Checkpoints"
+                              
+                                    placeholder="Select checkpoints"
                                     class="mb-4"
                                 />
+                                <div v-if="habitFrequency=='Daily'">
+                                    <USelect
+                                    v-model="habitCheckpoints.hours"
+                                    />
+                                </div>
+                                   
+                            
                             </div>
                             <div class="flex justify-end space-x-4">
                                 <UButton
