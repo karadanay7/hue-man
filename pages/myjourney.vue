@@ -1,7 +1,7 @@
 <template>
     <div class="flex items-center justify-center h-screen">
         <UContainer class="py-8">
-            <div class="flex flex-col items-center justify-center gap-3 pl-10">
+            <div class="flex flex-col items-center justify-center gap-4 pl-10">
                 <div class="w-full lg:w-2/3">
                     <h1 class="text-4xl font-bold text-center mb-6 ">Choose Your Focus</h1>
                     <p class="text-center mb-8">
