@@ -1,3 +1,11 @@
+
+
+You can watch the video by clicking !
+
+
+[![Video Thumbnail](https://i9.ytimg.com/vi_webp/aIKvxXebzGk/mq2.webp?sqp=CNzVhLUG&rs=AOn4CLAtIbCCVtBOEYqoOxZqfszV5b_Oqw)](https://www.youtube.com/watch?v=aIKvxXebzGk)
+
+
 # Nuxt 3 Minimal Starter
 
 Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
