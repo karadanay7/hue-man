@@ -16,11 +16,11 @@
     
         <div class="flex items-center gap-2">
           <div v-if="user">
-            <!-- Display the image -->
+          
             <img src="https://static.vecteezy.com/system/resources/previews/002/002/257/non_2x/beautiful-woman-avatar-character-icon-free-vector.jpg" alt="userProfile" class="w-14 rounded-full" />
           </div>
           <div v-else>
-            <!-- Placeholder if user or image not available -->
+     
           </div>
           <div class="w-full">
             <UTextarea
@@ -35,7 +35,7 @@
           </div>
         </div>
      
-      <!-- Display all notes inside the "notes" div -->
+     
      
     </div>
     <div class="w-full lg:w-2/3">
